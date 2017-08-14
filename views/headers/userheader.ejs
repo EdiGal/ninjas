@@ -1,0 +1,132 @@
+<div class="collapse navbar-collapse">
+    <div style="float:right; margin-top: 8px;">
+        <button id="addpost" class="btn btn-lg btn-primary" aria-label="Left Align">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </button>
+        <button class="btn btn-md btn-success" data-toggle="popover" title="Profile" data-placement="bottom">
+                profile
+        </button>
+    </div>
+    <h3 class="text-center">
+        <b>
+            <%var hour = (new Date()).getHours()%>
+            <%var greet = (hour>=5&&hour<12)?'Good Morning':(hour>=12&&hour<18)?'Good afternoon':(hour>=18&&hour<22)?'Good evening':'Good night'%>
+            <%=greet +' - ' + user.displayName||'no userName'%>
+        </b>
+    </h3>
+</div>
+<script>
+$(document).ready(function(){
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').focus()
+    })
+    $('#addpost').click(()=>{
+        BootstrapDialog.show({
+            title: 'Add New Publication',
+            message: $(`
+                <form id="asd" class="form-group" method="post" action="/article">
+                    <input type="text" id="newarticletitle" placeholder="Title" class="form-control">
+                    <textarea id="promocontent" style="margin-top:10px;" rows="3" class="form-control" placeholder="Promo - Content"></textarea>
+                    <textarea id="content" style="margin-top:10px;" rows="12" class="form-control" placeholder="Content"></textarea>
+                    <p class="lead">hubs:</p>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label data-hub="Information Security" class="hub btn btn-primary">
+                            <input type="checkbox" checked autocomplete="off">Information Security
+                        </label>
+                        <label data-hub="Programming" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> Programming
+                        </label>
+                        <label data-hub="Game Development" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> Game Development
+                        </label>
+                        <label data-hub="Web Development" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> Web Development
+                        </label>
+                        <label data-hub="JavaScript" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> JavaScript
+                        </label>
+                        <label data-hub="System Administration" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> System Administration
+                        </label>
+                        <label data-hub="Python" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> Python
+                        </label>
+                        <label data-hub="Machine learning" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> Machine learning
+                        </label>
+                        <label data-hub="IT Infrastructure" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> IT Infrastructure
+                        </label>
+                        <label data-hub="DevOps" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> DevOps
+                        </label>
+                        <label data-hub="Algorithms" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> Algorithms
+                        </label>
+                        <label data-hub="Open source" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> Open source
+                        </label>
+                        <label data-hub="Java" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> Java
+                        </label>
+                        <label data-hub="API" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> API
+                        </label>
+                        <label data-hub="C++" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> C++
+                        </label>
+                        <label data-hub="Reverse Engineering" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> Reverse Engineering
+                        </label>
+                        <label data-hub="Android" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> Android
+                        </label>
+                        <label data-hub="IOS" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> IOS
+                        </label>
+                        <label data-hub="Project Management" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> Project Management
+                        </label>
+                        <label data-hub="AR/VR" class="hub btn btn-primary">
+                            <input type="checkbox" autocomplete="off"> AR/VR
+                        </label>
+                        
+                    </div>
+                </form>`),
+            buttons: [{
+                label: 'Share Knowledge',
+                cssClass: 'btn-primary',
+                // hotkey: 13, // Enter.
+                action: function(dialogItself) {
+                    let Title = $('#newarticletitle').val();
+                    let Content = $('#content').val();
+                    let PromoContent = $('#promocontent').val();
+                    _datetime = new Date();
+                    let hubs = [];
+                    $('.active').each((ind, active) => {hubs.push($(active).attr('data-hub'))})
+                    let article = {Title, Content, PromoContent, _datetime, hubs}
+                    console.log(article)
+                    $.post('/article', {article}).then((articleHTML,b,c)=>{
+
+                        if(c.status==200){
+                            $('#articles').prepend(articleHTML)
+                            dialogItself.close()
+                        }
+                        else {
+                            alert('houston we have a problem')
+                        }
+                    }).catch((a,b,c) =>{
+                        if(a.status == 403){
+                            alert('need to login')
+                        }
+                        else {
+                            alert('houston we have a problem')
+                        }
+                    })
+                }
+            }]
+        });
+    })
+    $('[data-toggle="popover"]').popover();
+});
+</script>

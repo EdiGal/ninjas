@@ -1,0 +1,7 @@
+<div id="articles" class="container">
+    <%articles.forEach(article => {%>
+        <%- include('articlepromo', {user, article}); %>
+    <%})%>
+</div>
+    <div class="text-center"><a href="#" id="loadmore" class="center btn btn-primary">More Knowledge...</a></div>
+    </div>

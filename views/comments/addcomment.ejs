@@ -1,0 +1,30 @@
+<div class="container">
+	<div class="row">
+		<h3>Leave Comment</h3>
+	</div>
+    
+    <div class="row">
+    
+        <div class="col-md-6">
+            <div class="widget-area no-padding blank">
+                <div class="status-upload">
+                    <textarea disabled="<%user?'true':'false'%>" rows="5" cols="60" placeholder="<%=user?'What do you think about it?':'only registered user can leave a comment'%>" ></textarea>
+                    <ul>
+                        <li style="display:inline; margin-right:10px"><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+                        <li style="display:inline; margin-right:10px"><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+                        <li style="display:inline; margin-right:10px"><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+                        <li style="display:inline"><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                    </ul>
+                    <button disabled="<%user?'true':'false'%>" id="sendcomment" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+                </div><!-- Status Upload  -->
+            </div><!-- Widget Area -->
+        </div>
+        
+    </div>
+</div>
+
+<script>
+$('#sendcomment').click(()=>{
+
+})
+</script>

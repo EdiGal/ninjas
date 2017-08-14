@@ -1,0 +1,59 @@
+<html>
+    <body>
+        <%- include('headers/header', {user}); %>
+        
+        <main>
+            <%stars.forEach(star=>{%>
+
+                <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
+                <div class="container">
+                    <div class="well">
+                        <div class="media">
+                            <a class="pull-left" href="#">
+                                <img class="media-object" src="<%=star.avatarurl%>">
+                            </a>
+                            <div class="media-body">
+                                <h4 class="media-heading"><a href="/star/<%=star._id%>"><%=star.displayName%><a></h4>
+                                <p class="text-right"><a href="www.somelink.co.il">on GitHub</a></p>
+                                <p><%=star.about%></p>
+                                <ul class="list-inline list-unstyled">
+                                <li><span><i class="glyphicon glyphicon-calendar"></i>
+                                        <%let yearsDiff = moment().diff(star._day, 'years')%>
+                                        <%=yearsDiff?yearsDiff+' years':''%>
+                                        
+                                        <%let monthsDiff = moment().subtract(yearsDiff, 'years').diff(star._day, 'months')%>
+                                        <%=monthsDiff ? monthsDiff>1 ? monthsDiff+' months':monthsDiff+' month':''%>
+                                        
+                                        <%let daysDiff = moment().subtract(monthsDiff, 'months').subtract(yearsDiff, 'years').diff(moment(star._day), 'days')%>
+                                        <%= daysDiff + ' days'%>
+                                    </span>
+                                </li>
+                                <li>|</li>
+                                <span><a href="#"><i class="glyphicon glyphicon-bullhorn"></i> 2 publications</a></span>
+                                <li>|</li>
+                                <li>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                                </li>
+                                <li>|</li>
+                                <li>
+                                <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                                <span><i class="fa fa-facebook-square"></i></span>
+                                <span><i class="fa fa-twitter-square"></i></span>
+                                <span><i class="fa fa-google-plus-square"></i></span>
+                                </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%})%>
+        </main>
+
+    </body>
+</html>
+
+

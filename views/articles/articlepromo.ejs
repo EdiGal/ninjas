@@ -1,0 +1,38 @@
+<div class="row" style="padding-top:50px;">
+    <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <div id="postlist">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <div class="text-center">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <h3 class="pull-left"><%=article.Title%></h3>
+                                </div>
+                                <div class="col-sm-3">
+                                    <h4 class="pull-right">
+                                        <%let date = article._datetime.getFullYear() + ' - ' + (article._datetime.getMonth()+1) + ' - ' +article._datetime.getDate()%>
+                                        <%let minutes = article._datetime.getMinutes()%>
+                                        <%let time = article._datetime.getHours()+':'+(minutes<10?'0'+minutes:minutes)%>
+                                        <small><em><%=date%><br><%=time%></em></small>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                <div class="">
+                    <%-article.PromoContent%><a href="/article/<%=article._id%>">... Read more</a>
+                </div>
+                
+                <div class="panel-footer">
+                    <%article.hubs.forEach(hub=>{%>
+                    <span class="label label-default"><%=hub%></span>
+                    <%})%>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</div>

@@ -1,0 +1,141 @@
+<head>
+<title>Stars</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+
+<script
+    src="http://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous">
+</script>
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/css/bootstrap-dialog.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-dialog/1.34.7/js/bootstrap-dialog.min.js">
+</script>
+</head>
+
+<nav class="navbar navbar-default">
+<div class="container-fluid">
+<div class="navbar-header">
+<a class="navbar-brand" href="/">Stars</a>
+</div>
+
+<%if(!user) {%>
+    <%- include('loginheader')%>
+<%} else {%>
+    <%- include('userheader') %> 
+<%}%>
+</div>
+</nav>
+
+<div class="container-fluid ">
+    <div class="col-lg-7" class="text-center" style="">
+        <button type="button" class="btn btn-link"><h2><b>Stars</b></h2></button>
+        <a href="/" class="btn btn-link"><h3>Publications</h3></a>
+        <a href="/stars" class="btn btn-link"><h3>Stars</h3></a>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown"><h3>Hubs</h3></button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a style="margin-top:0px" class="btn btn-success" href="/search=?hub=Information Security">Information Security</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=Programming">Programming</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=Game Development">Game Development</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=Web Development">Web Development</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=JavaScript">JavaScript</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=System Administration">System Administration</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=Python">Python</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=Machine learning">Machine learning</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=IT Infrastructure">IT Infrastructure</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=DevOps">DevOps</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=Algorithms">Algorithms</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=Open source">Open source</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=API">API</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=Reverse Engineering">Reverse Engineering</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=Android">Android</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=IOS">IOS</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=Project Management">Project Management</a></li>
+                <li><a style="margin-top:5px" class="btn btn-success" href="/search=?hub=AR/VR">AR/VR</a></li>
+            </ul>
+        </div>
+
+        <a href="/companies" class="btn btn-link"><h3>Companies</h3></a>
+        <a href="/about" class="btn btn-link"><h3>coffee</h3></a>
+    </div>
+
+    <div class="col-lg-4" style="margin-top:20px;">
+        <form class="form-inline" method="POST" action="/search">
+            <div class="form-group">
+                <div class="buxtton-group">
+                    <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">HUBS <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" class="hubsearch small" data-value="Information Security" tabIndex="-1"><input type="checkbox"/>&nbsp;Information Security</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="Programming" tabIndex="-1"><input type="checkbox"/>&nbsp;Programming</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="Game Developmen" tabIndex="-1"><input type="checkbox"/>&nbsp;Game Development</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="Web Development" tabIndex="-1"><input type="checkbox"/>&nbsp;Web Development</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="JavaScript" tabIndex="-1"><input type="checkbox"/>&nbsp;JavaScript</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="System Administration" tabIndex="-1"><input type="checkbox"/>&nbsp;System Administration</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="Python" tabIndex="-1"><input type="checkbox"/>&nbsp;Python</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="Machine learning" tabIndex="-1"><input type="checkbox"/>&nbsp;Machine learning</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="IT Infrastructure" tabIndex="-1"><input type="checkbox"/>&nbsp;IT Infrastructure</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="DevOps" tabIndex="-1"><input type="checkbox"/>&nbsp;DevOps</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="Algorithms" tabIndex="-1"><input type="checkbox"/>&nbsp;Algorithms</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="Open source" tabIndex="-1"><input type="checkbox"/>&nbsp;Open source</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="Java" tabIndex="-1"><input type="checkbox"/>&nbsp;Java</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="API" tabIndex="-1"><input type="checkbox"/>&nbsp;API</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="C++" tabIndex="-1"><input type="checkbox"/>&nbsp;C++</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="Reverse Engineering" tabIndex="-1"><input type="checkbox"/>&nbsp;Reverse Engineering</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="Android" tabIndex="-1"><input type="checkbox"/>&nbsp;Android</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="IOS" tabIndex="-1"><input type="checkbox"/>&nbsp;IOS</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="Project Management" tabIndex="-1"><input type="checkbox"/>&nbsp;Project Management</a></li>
+                        <li><a href="#" class="hubsearch small" data-value="AR/VR" tabIndex="-1"><input type="checkbox"/>&nbsp;AR/VR</a></li>
+                    </ul>
+                <input type="text" class="form-control" id="searchinput" placeholder="Search">
+                <button id="submitsearch" type="button" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+var options = [];
+
+$( '.dropdown-menu a' ).on( 'click', function( event ) {
+
+    var $target = $( event.currentTarget ),
+        val = $target.attr( 'data-value' ),
+        $inp = $target.find( 'input' ),
+        idx;
+
+    if ( ( idx = options.indexOf( val ) ) > -1 ) {
+        options.splice( idx, 1 );
+        setTimeout( function() { $inp.prop( 'checked', false ) }, 0);
+    }
+    else {
+        options.push( val );
+        setTimeout( function() { $inp.prop( 'checked', true ) }, 0);
+    }
+
+    $( event.target ).blur();
+
+    return false;
+    });
+
+    $('#submitsearch').click(()=>{
+        let searchInput = $('#searchinput').val();
+        window.location = '/search?input='+searchInput+'&hubs='+options;
+    })
+</script>
