@@ -11,7 +11,16 @@ exports.InsertArticle = Article => new Promise((resolve, reject) => {
     });
 })
 
-exports.GetAllArticles = () => new Promise((resolve, reject) => {
+exports.GetAllArticles = () => [{
+    _id: 1,
+    Title: "test title 1",
+    _datetime: new Date(),
+    PromoContent: "<h2>promo content<h2>",
+    hubs: ["aHub", "bHub"]
+}]
+/*
+static for easy deploy
+new Promise((resolve, reject) => {
     articles.find().sort({_datetime: -1}).toArray((err, result) => {
         if (err)
             reject(err);
@@ -20,6 +29,7 @@ exports.GetAllArticles = () => new Promise((resolve, reject) => {
         }
     });
 })
+*/
 
 exports.GetArticleById = id => new Promise((resolve, reject) => {
     id = toObjectID(id);
