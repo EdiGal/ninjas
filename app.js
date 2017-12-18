@@ -159,5 +159,4 @@ app.get('/about', (req, res) => {
     res.render('readme',{user:req.user})
 })
 
-app.listen(3000, (err,b) => {
-});
+app.listen(process.env.PORT||3000);
